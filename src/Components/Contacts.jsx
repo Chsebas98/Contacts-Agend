@@ -1,3 +1,6 @@
+import { useReducer } from "react";
+import { contactosReducer } from "../Reducers/contactosReducer";
+import Formadd from "./Formadd";
 import TableContacts from "./TableContacts";
 
 const Contacts = () => {
@@ -13,24 +16,27 @@ const Contacts = () => {
       numero: "0970130062",
     },
     {
-      id: "hbbs",
+      id: "hbb1s",
       name: "Pamela",
       numero: "0996136062",
     },
     {
-      id: "hbbs",
-      name: "Lina",
+      id: "h2bbs",
+      name: "Luna",
       numero: "0940130062",
     },
     {
-      id: "hbbs",
+      id: "hb3bs",
       name: "Samanta",
       numero: "0996230679",
     },
   ];
+
+  const [state, dispatch] = useReducer(contactosReducer, contactos);
   return (
     <div className="container mt-3">
-      <TableContacts contactos={contactos} />
+      <Formadd dispatch={dispatch} />
+      <TableContacts contactos={state} />
     </div>
   );
 };
