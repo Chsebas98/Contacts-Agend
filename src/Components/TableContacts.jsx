@@ -1,7 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const TableContacts = ({ contactos }) => {
+const TableContacts = ({ contactos = [], dispatch }) => {
+  const handleDelete = (id) => {
+    const deleteAction = {
+      type: "delete",
+      payload: id,
+    };
+    dispatch(deleteAction);
+  };
+
   return (
     <table className="table table-striped">
       <thead>
@@ -14,13 +22,19 @@ const TableContacts = ({ contactos }) => {
       </thead>
       <tbody>
         {contactos.map((contact) => {
+          const finalId = contact.id.split("-");
           return (
             <tr key={contact.id}>
-              <th>{contact.id}</th>
+              <th>{finalId[0]}</th>
               <td>{contact.name}</td>
               <td>{contact.numero}</td>
               <td>
-                <button className="btn btn-danger">Delete</button>
+                <button
+                  onClick={() => handleDelete(contact.id)}
+                  className="btn btn-danger"
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           );
