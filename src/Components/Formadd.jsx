@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { v4 as uuid } from "uuid";
 const Formadd = ({ dispatch }) => {
-  const [data, setData] = useState({ nombre: "", numero: "" });
-  const { nombre, numero } = data;
+  const [data, setData] = useState({ name: "", numero: "" });
+  const { name, numero } = data;
 
   const handleChange = (e) => {
     setData({
@@ -15,8 +15,8 @@ const Formadd = ({ dispatch }) => {
     type: "add",
     payload: {
       id: uuid(),
-      name: "Diane",
-      numero: "0948732106",
+      name,
+      numero,
     },
   };
 
@@ -32,8 +32,8 @@ const Formadd = ({ dispatch }) => {
           <input
             onChange={handleChange}
             type="text"
-            name="nombre"
-            value={nombre}
+            name="name"
+            value={name}
             className="form-control"
             autoComplete="off"
           ></input>
